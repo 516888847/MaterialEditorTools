@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "MaterialEditorTools",
+	"Description": "",
+	"Category": "Editor",
+	"CreatedBy": "AsherXie",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "MaterialEditorTools",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	]
+}
