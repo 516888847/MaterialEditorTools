@@ -38,8 +38,16 @@ void FMaterialEditorToolsCore::Init()
 	if (PB_MatObj)
 	{
 		PB_MatInstanceObj = Cast<UMaterialInstanceConstant>(PB_MatObj);
-		PB_MatInstanceObj->SetScalarParameterValueEditorOnly(FMaterialParameterInfo("HBSW"), 0);
-		PB_NormalBrush->SetResourceObject(PB_MatInstanceObj);
+		if(PB_MatInstanceObj)
+		{
+			float forcheck = 0;
+			if (PB_MatInstanceObj->GetScalarParameterValue(FMaterialParameterInfo("HBSW"), forcheck))
+			{
+				PB_MatInstanceObj->SetScalarParameterValueEditorOnly(FMaterialParameterInfo("HBSW"), 0);
+				PB_NormalBrush->SetResourceObject(PB_MatInstanceObj);
+			}
+		}
+
 	}
 	
 	PromoteButtonStyle->SetNormal(*PB_NormalBrush);
@@ -81,11 +89,19 @@ void FMaterialEditorToolsCore::AddToolBarExtension(FToolBarBuilder& builder)
 	
 	auto PB_ButtonHovered = [this]()
 	{
-		PB_MatInstanceObj->SetScalarParameterValueEditorOnly(FMaterialParameterInfo("HBSW"), 1);
+		float forcheck = 0;
+		if (PB_MatInstanceObj->GetScalarParameterValue(FMaterialParameterInfo("HBSW"), forcheck))
+		{
+			PB_MatInstanceObj->SetScalarParameterValueEditorOnly(FMaterialParameterInfo("HBSW"), 1);
+		}
 	};
 	auto PB_ButtonUnHovered = [this]()
 	{
-		PB_MatInstanceObj->SetScalarParameterValueEditorOnly(FMaterialParameterInfo("HBSW"), 0);
+		float forcheck = 0;
+		if (PB_MatInstanceObj->GetScalarParameterValue(FMaterialParameterInfo("HBSW"), forcheck))
+		{
+			PB_MatInstanceObj->SetScalarParameterValueEditorOnly(FMaterialParameterInfo("HBSW"), 0);
+		}
 	};
 	auto ICV_ChangeCheck = [this](ECheckBoxState CS)
 	{
